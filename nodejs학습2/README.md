@@ -10,5 +10,8 @@
 HTTML를 입력후 원래 주소인http://localhost:3000에서 http://localhost:3000/?id=HTML로 버뀌어 있는걸 확인이 가능
 ![image](https://github.com/user-attachments/assets/1639c47f-a975-4d46-be16-f7d19589c320)
 
+터미널에 Ctrl + C를 입력하면 종료
+![image](https://github.com/user-attachments/assets/b999bda7-6ffe-4306-ba60-28c8c79f86a1)
+
 
 
