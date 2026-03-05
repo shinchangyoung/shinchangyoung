@@ -1,0 +1,52 @@
+# 🎙️ AI Avatar Project: Step 1 - STT (Faster-Whisper)
+
+이 문서는 구글 코랩(Google Colab) 환경에서 `Faster-Whisper`를 이용해 음성을 텍스트로 변환하는 과정을 정리한 가이드입니다.
+
+## 🛠️ 1. 환경 설정 및 라이브러리 설치
+먼저 필요한 라이브러리를 설치하고 구글 드라이브를 마운트합니다.
+
+```python
+# Faster-Whisper 설치
+!pip install faster-whisper
+
+# 구글 드라이브 마운트
+from google.colab import drive
+drive.mount('/content/drive')
+
+# 작업 폴더 생성
+import os
+storage_path = "/content/drive/MyDrive/AI_Avatar/STT_Test"
+os.makedirs(storage_path, exist_ok=True)
+from faster_whisper import WhisperModel
+import time
+import os
+
+# 1. 모델 로드 (VRAM 약 2-3GB 점유)
+# device="cuda" 설정 필수 (런타임 유형 GPU 확인)
+model_size = "large-v3"
+model = WhisperModel(model_size, device="cuda", compute_type="float16")
+
+# 2. 입력 파일 경로 설정
+# 미리 구글 드라이브 해당 경로에 음성 파일을 업로드해야 합니다.
+input_file = "/content/drive/MyDrive/AI_Avatar/STT_Test/input_audio.wav"
+
+if os.path.exists(input_file):
+    print("🚀 STT 변환 시작...")
+    start_time = time.time()
+    
+    # 3. 변환 실행 (한국어 설정)
+    segments, info = model.transcribe(input_file, beam_size=5, language="ko")
+
+    print(f"✅ 감지된 언어: {info.language} (확률: {info.language_probability:.2f})")
+
+    full_text = ""
+    for segment in segments:
+        print(f"⏳ [{segment.start:.2f}s -> {segment.end:.2f}s] {segment.text}")
+        full_text += segment.text + " "
+
+    end_time = time.time()
+    print(f"\n📝 최종 변환 텍스트: {full_text}")
+    print(f"⏱️ 소요 시간: {end_time - start_time:.2f}초")
+else:
+    print(f"❌ 파일을 찾을 수 없습니다: {input_file}")
+    print("구글 드라이브 'AI_Avatar/STT_Test' 폴더에 'input_audio.wav' 파일을 업로드해주세요.")
