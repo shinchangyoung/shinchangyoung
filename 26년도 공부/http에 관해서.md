@@ -1,7 +1,7 @@
 # HTTP (HyperText Transfer Protocol) 핵심 정리
 
 ## 1. HTTP란?
-**HTTP(HyperText Transfer Protocol)**는 웹상에서 클라이언트(주로 웹 브라우저)와 서버가 데이터를 주고받기 위해 사용하는 통신 규약(프로토콜)이다. 초기에는 HTML 문서(HyperText)를 전송하기 위해 만들어졌으나, 현재는 JSON, 이미지, 영상, 오디오 등 거의 모든 형태의 데이터를 전송하는 데 사용된다.
+**HTTP(HyperText Transfer Protocol)**는 웹상에서 클라이언트(주로 웹 브라우저)와 서버가 데이터를 주고받기 위해 사용하는 통신 규약(프로토콜)이다. 초기에는 HTML 문서(HyperText)를 전송하기 위해 만들어졌으나, 현재는 JSON, 이미지, 영상, 오디오 등 거의 모든 형태의 데이터를 전송하는 데 사용됨.
 
 
 
